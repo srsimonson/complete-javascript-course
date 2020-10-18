@@ -714,5 +714,3 @@ console.log(john, mark);
 john.average = calcAverage(john.tips);
 mark.average = calcAverage(mark.tips);
 console.log(john, mark);
-
-// test commit 
