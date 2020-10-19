@@ -65,3 +65,40 @@
 //     var d = 'John';
 //     console.log(a + d);
 // }
+
+
+///////////////////////////////////////
+// Lecture: The this keyword
+
+console.log(this);
+
+function calculateAge(year) {
+    console.log(2016 - year);   
+}
+
+calculateAge(1983);
+
+let john = {
+    firstName: 'John',
+    yearOfBirth: 1990,
+    calculateAge: function() {
+        console.log(this);
+        console.log(2020-this.yearOfBirth);
+
+        function innerFunction() {
+            console.log(this);
+        }
+        innerFunction();
+    }
+}
+
+john.calculateAge();
+
+let mike = {
+    firstName: 'Mike',
+    yearOfBirth: 1983
+}
+
+// Method Borrowing. Instead of copy/pasting it, just make mike = john.
+mike.calculateAge = john.calculateAge;
+mike.calculateAge();
