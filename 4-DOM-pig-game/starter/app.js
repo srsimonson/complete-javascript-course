@@ -8,22 +8,10 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
-let scores = [ 0, 0 ];
-let roundScore = 0;
-let activePlayer = 0;
 
-// document.querySelector("#current-" + activePlayer).textContent = dice;
-// document.querySelector("#current-" + activePlayer).innerHTML = '<em>' + dice + '<em>';
-// var x = document.querySelector('#score-0').textContent;
+let scores, roundScore, activePlayer;
 
-// Change CSS target dice ID, with 'style'
-document.querySelector(".dice").style.display = 'none';
-
-// You can use querySelector or getElementById, which is faster.
-document.getElementById('score-0').textContent = '0'
-document.getElementById('score-1').textContent = '0'
-document.getElementById('current-0').textContent = '0'
-document.getElementById('current-1').textContent = '0'
+init();
 
 // Function we pass into another function - callback function.
 // Anonymous function. No name, can't be reused.
@@ -70,5 +58,31 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
     document.querySelector('.dice').style.display = 'none';
+}
 
+document.querySelector('.btn-new').addEventListener('click', init);
+
+function init() {
+    scores = [ 0, 0 ];
+    roundScore = 0;
+    activePlayer = 0;
+    // document.querySelector("#current-" + activePlayer).textContent = dice;
+    // document.querySelector("#current-" + activePlayer).innerHTML = '<em>' + dice + '<em>';
+    // var x = document.querySelector('#score-0').textContent;
+
+    // Change CSS target dice ID, with 'style'
+    document.querySelector(".dice").style.display = 'none';
+
+    // You can use querySelector or getElementById, which is faster.
+    document.getElementById('score-0').textContent = '0'
+    document.getElementById('score-1').textContent = '0'
+    document.getElementById('current-0').textContent = '0'
+    document.getElementById('current-1').textContent = '0'
+    document.getElementById('name-0').textContent = 'Player 1'
+    document.getElementById('name-1').textContent = 'Player 2'
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.add('active');
 }
