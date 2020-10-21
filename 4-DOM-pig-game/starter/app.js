@@ -28,13 +28,24 @@ document.getElementById('current-1').textContent = '0'
 // Function we pass into another function - callback function.
 // Anonymous function. No name, can't be reused.
 document.querySelector('.btn-roll').addEventListener('click', function() {
-    //1 Generate random number.
     let dice = Math.floor( Math.random() * 6 ) + 1;
-    //2 Display result.
     var diceDOM = document.querySelector('.dice')
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice + '.png'
-    //3 Update round score if rolled number is not a 1
 
-    
-} )
+    if (dice !== 1 ) {
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    } else {
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0;
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
+        // document.querySelector('.player-0-panel').classList.remove('active');
+        // document.querySelector('.player-1-panel').classList.add('active');
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+        document.querySelector('.dice').style.display = 'none';
+    }
+} 
+)
