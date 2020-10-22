@@ -1,14 +1,12 @@
-console.log('hi');
-
 // Arrow functions!
-
 const calcAge2 = function (birthYear) {
     return 2020 - birthYear;
 }
+
 // Arrow function is a function expression. Return of 2020-birthYear is implicit. Don't need to specify it.
 const calcAge3 = birthYear => 2020 - birthYear;
 
-console.log( calcAge3(1983) );
+// console.log( calcAge3(1983) );
 
 // How many years until retirement.
 
@@ -35,7 +33,7 @@ function fruitProcessor (apples, oranges) {
     return juice;
 }
 
-console.log(fruitProcessor(2, 3))
+// console.log(fruitProcessor(2, 3))
 
 const calcAge = function(birthYear) {
     return 2020-birthYear
@@ -48,8 +46,8 @@ let yearsUntilRetirement = function (birthYear, firstName) {
     return `${firstName} will retire in ${retirement} years.`
 }
 
-console.log(yearsUntilRetirement(1983, 'Steve'))
-console.log('----------------------');
+// console.log(yearsUntilRetirement(1983, 'Steve'))
+// console.log('----------------------');
 
 const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
@@ -68,5 +66,57 @@ let checkWinner = (dolphins, koalas) => {
     }
 }
 
-checkWinner(dAvg1, kAvg1);
-checkWinner(dAvg2, kAvg2);
+// checkWinner(dAvg1, kAvg1);
+// checkWinner(dAvg2, kAvg2);
+
+// Dot vs Bracket notation. More array methods. Object function methods.
+let steve = {
+    firstName: 'Steve',
+    lastName: 'Simonson',
+    birthYear: '1983',
+    occupation: 'Software Developer',
+    friends: ['KV', 'Jon', 'Yakki', 'Dani'],
+    hasDriversLicense: true,
+    calcAge: function() {
+        // console.log('this', this);
+        this.age = 2020 - this.birthYear;
+        return this.age;
+    },
+    myBio: function() {
+        return `${this.firstName} is a ${this.calcAge()} year old ${this.occupation}. He ${this.hasDriversLicense ? 'has' : 'doesn\'t have a'} driver\'s license. He has ${this.friends.length} friends.`
+    }
+};
+
+// Loop within a loop
+for (let exercise = 1; exercise <= 3; exercise ++) {
+    // console.log(`Exercise: ${exercise}`);
+    for (let rep = 1; rep <= 5; rep ++) {
+        // console.log(`Rep # ${rep}`);
+    }
+}
+
+//While Loop
+let exercise = 1;
+while (exercise <=10) {
+    console.log(`Rep ${exercise}`);
+    exercise++
+}
+
+// Random tidbits
+var t0 = performance.now();
+var result = Math.floor(3.5);
+var t1 = performance.now();
+console.log('Took', (t1 - t0).toFixed(10), 'milliseconds to generate:', result);
+var t0 = performance.now();
+var result = Math.trunc(3.5);
+var t1 = performance.now();
+console.log('Took', (t1 - t0).toFixed(10), 'milliseconds to generate:', result);
+
+console.log(Date.now())
+
+// console.log(steve.myBio());
+// console.log(`Steve has ${steve.friends.length} friends, and his best friend is ${steve.friends[0]}.`);
+// console.log('friends.indexOf(jon)', steve.friends.indexOf('Jon'));
+// console.log('friends.indexOf(Katie)', steve.friends.indexOf('Erin')); // Remember gives -1
+// console.log('friends.includes(Katie)', steve.friends.includes('Erin'));
+// steve.friends.includes('Peter') ? console.log('Peter is my friend') : console.log('Peter isn\'t my friend.');
