@@ -7,44 +7,56 @@ GAME RULES:
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
 
+// Challenges
+[ ] - Player loses entire score if they roll 2 6's in a row. (HINT: save previous score in dice roll.)
+[ ] - Add input field to HTML where players can set the winning score themselves. (HINT: .value property)
+[ ] - Add a 2nd dice. Player loses his score when 1 of them is a 1. (HINT: you will need CSS to position the 2nd dice, so look at the CSS for the first one.)
+
 */
 
 let scores, roundScore, activePlayer;
+let gamePlaying = true;
 
 init();
 
 // Function we pass into another function - callback function.
 // Anonymous function. No name, can't be reused.
 document.querySelector('.btn-roll').addEventListener('click', function() {
-    let dice = Math.floor( Math.random() * 6 ) + 1;
-    var diceDOM = document.querySelector('.dice')
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png'
+    if (gamePlaying) {
+        let dice = Math.floor( Math.random() * 6 ) + 1;
+        var diceDOM = document.querySelector('.dice')
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice + '.png';
 
-    if (dice !== 1 ) {
-        roundScore += dice;
-        document.querySelector('#current-' + activePlayer).textContent = roundScore;
-    } else {
-        nextPlayer();
+        if (dice !== 1 ) {
+            roundScore += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        } else {
+            nextPlayer();
+        }
     }
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function(){
-    //when click hold...
-    // Add current score to global score
-    scores[activePlayer] += roundScore;
 
-    // update the UI
-    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]
+    if (gamePlaying) {
+        //when click hold...
+        // Add current score to global score
+        scores[activePlayer] += roundScore;
 
-    // Check if the player won the game. 
-    if ( scores[activePlayer] >= 100 ) {
-        document.querySelector('#name-' + activePlayer ).textContent = 'Winner!';
-        document.querySelector('.dice').style.display = 'none';
-        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-    } else {
-        nextPlayer();
+        // update the UI
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]
+
+        // Check if the player won the game. 
+        if ( scores[activePlayer] >= 20 ) {
+            document.querySelector('#name-' + activePlayer ).textContent = 'Winner!';
+            document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+            gamePlaying = false;
+        } else {
+            nextPlayer();
+        }
     }
 })
 
