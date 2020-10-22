@@ -1,3 +1,4 @@
+
 /*
 GAME RULES:
 
@@ -117,3 +118,15 @@ function init() {
 function setScore (){
     finalScore = document.getElementById('decide-score').value;
 }
+
+// Random tidbits
+console.log('2**3', 2**3);
+
+let templateLiteral = `I'm ${finalScore} years old.`
+console.log(templateLiteral);
+
+console.log('string with \n\ multiple \n\ lines');
+
+console.log(String(23), Number(23), Boolean(true));
+
+'use strict'; // is a new thing. what is it? Strict mode. Throws errors in the console when at times js would just fail silently.
