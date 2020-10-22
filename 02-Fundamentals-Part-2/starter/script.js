@@ -112,7 +112,8 @@ var result = Math.trunc(3.5);
 var t1 = performance.now();
 console.log('Took', (t1 - t0).toFixed(10), 'milliseconds to generate:', result);
 
-console.log(Date.now())
+console.log('Date.now(): ', Date.now())
+console.log('performance.now(): ', performance.now())
 
 // console.log(steve.myBio());
 // console.log(`Steve has ${steve.friends.length} friends, and his best friend is ${steve.friends[0]}.`);
