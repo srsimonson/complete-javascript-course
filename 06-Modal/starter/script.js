@@ -34,9 +34,9 @@ document.addEventListener('keydown', function (e) {
     // whichever key pressed is the event
      console.log('e: ', e.key);
 
-     if (e.key === 'Escape') {
-         if (!modal.classList.contains('hidden')) { // prevents unnecessary firing of function?? 
+     // Refactored:
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) { 
              closeModal()
          }
      }
-})
+)
