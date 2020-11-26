@@ -115,20 +115,77 @@ THIS Keyword
 
 /* THIS KEYWORD with regular and arrow functions */
 
-const steve = {
-    firstName: 'Steve',
-    year: 1983,
-    calcAge: function() {
-        console.log('this: ', this);
-        console.log(2020 - this.year);
-        const isMillenial = function() {
-            console.log(this.year >= 1981 && this.year <= 1996);
-        };
-        isMillenial()     
-    },
-    greet: () => console.log(`Hey ${this.firstName}`), // undefined because arrow function doesn't create a this
+// const steve = {
+//     firstName: 'Steve',
+//     year: 1983,
+//     calcAge: function() {
+//         // console.log('this: ', this);
+//         console.log(2020 - this.year);
+//         const isMillenial = function() {
+//             console.log(this.year >= 1981 && this.year <= 1996);
+//         };
+//         isMillenial()     
+//     },
+//     greet: () => console.log(`Hey ${this.firstName}`), // undefined because arrow function doesn't create a this
+// };
+
+// steve.greet();
+// console.log(this.firstName);
+
+/* * * * * * * * * * *
+Primitives vs Objects 
+* * * * * * * * * * */
+
+// Primitives - each variable stores in it's own memory in the stack
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log('lastName: ', lastName);
+console.log('oldLastName: ', oldLastName);
+
+const jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+}
+
+// Objects - stored in the heap, and then referenced. Points to the same memory address in the heap.
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('original name: ', jessica.lastName);
+console.log('married name: ', marriedJessica.lastName);
+
+// Copying Objects
+const jessica2 = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
 };
 
-steve.greet();
-console.log(this.firstName);
+const jessicaCopy = Object.assign({}, jessica2); // create a new object by merging objects with Object.assign
+jessicaCopy.lastName = 'Davis';
+console.log('original name Jessica2: ', jessica2.lastName);
+console.log('married name jessicaCopy: ', jessicaCopy.lastName);
 
+let obj1 = {
+    d: 'a',
+    e: 'b',
+    f: 'c',
+    x: [1, 2, 3]
+}
+
+let obj2 = {
+    d: 'd',
+    e: 'e',
+    f: 'f',
+}
+
+console.log('obj1: ', obj1);
+console.log('obj2: ', obj2);
+
+// Shallow clone. Only copies surface level.
+let obj3 = Object.assign(obj1, obj2);
+console.log('obj3: ', obj3);
+
+obj3.x.push(5)
+console.log('obj3: ', obj3);
