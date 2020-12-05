@@ -27,6 +27,10 @@ const restaurant = {
   },
 };
 
+/* * * * * * * * * * 
+ARRAY DESTRUCTURING 
+* * * * * * * * * */
+
 // Array destructuring: break down complex data to simple vars.
 
 const arr = [2, 3, 4]
@@ -55,6 +59,7 @@ console.log( restaurant.order(2, 0));
 const [asdf, fdsa] = restaurant.order(2, 0);
 console.log('asdf, fdsa: ', asdf, fdsa); // Garlic Bread, Pizza
 
+// Nested Destructuring
 const nested = [2, 4, [5, 6] ];
 
 // const [ /*2*/ , /*4*/ , j] = nested;
@@ -65,3 +70,13 @@ const nested = [2, 4, [5, 6] ];
 const [ /*2*/ , /*4*/ , [k, l] ] = nested; // simpler double nested destructuring
 
 console.log('k, l', k, l);
+
+// Default values
+
+const [ p=1, q=1, r=1 ] = [8, 9]
+console.log('p, q, r', p, q, r);
+
+
+/* * * * * * * * * * 
+OBJECT DESTRUCTURING 
+* * * * * * * * * */
