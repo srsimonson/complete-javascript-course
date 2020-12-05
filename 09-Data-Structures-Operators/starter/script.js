@@ -27,9 +27,47 @@ const restaurant = {
   },
 };
 
+
+
+console.log(`/* * * * * * * * * * 
+OBJECT DESTRUCTURING 
+* * * * * * * * * */`);
+
+const { name, openingHours, categories } = restaurant;
+console.log('name, openingHours, categories: ', name, openingHours, categories);
+
+const { 
+  name: restaurantName, 
+  openingHours: hours, 
+  categories: tags 
+} = restaurant;
+
+console.log('restaurantName, openingHours, tags: ', restaurantName, openingHours, tags);
+
+// Default Values. If undefined, will define as [ ], if defined, will override the [ ] and be the data
+const { menu = [], starterMenu: starters = [] } = restaurant
+console.log('menu, starters: ', menu, starters);
+
+// Mutating variables.
+let aa = 111;
+let bb = 999
+const obj = { aa: 23, bb: 7, cc: 14 };
+
+// You can not use let, because it's already been declared. You can't do { a, b } = obj, because only curly braces will be interpreted as the start of a function. you need to wrap the whole expression in ( ) and then you can mutate the variables.
+({ aa, bb } = obj);
+console.log('aa, bb: ', aa, bb);
+
+
+
+
+console.log(`
+
+
+
+
 /* * * * * * * * * * 
 ARRAY DESTRUCTURING 
-* * * * * * * * * */
+* * * * * * * * * */`);
 
 // Array destructuring: break down complex data to simple vars.
 
@@ -75,8 +113,3 @@ console.log('k, l', k, l);
 
 const [ p=1, q=1, r=1 ] = [8, 9]
 console.log('p, q, r', p, q, r);
-
-
-/* * * * * * * * * * 
-OBJECT DESTRUCTURING 
-* * * * * * * * * */
