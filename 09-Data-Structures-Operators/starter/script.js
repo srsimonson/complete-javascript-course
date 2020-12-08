@@ -265,6 +265,8 @@ console.log(`
 // Logical operators an use or return any data type, and can do short-circuiting or short-circuit evaluation.
 
 // If first value is true, then the 2nd will not even render.
+console.log('----||----');
+
 console.log ( 3 || 'Steve' );
 console.log ('nothing: ', '' || '' );
 console.log ( true || 0 );
@@ -276,3 +278,28 @@ restaurant.numGuests = 23
 
 const guests1 = restaurant.numGuests || 10
 console.log('guests1: ', guests1);
+
+console.log(`
+----&&----`);
+// Short circuits when the first value is falsy, returns that value and doesn't evaluate further.
+// If the first one is true, then continue evaluating the other operands.
+console.log(0 && 'Steve'); // 0
+console.log(1 && 'Steve'); // Steve
+
+console.log('Hello' && 23 && 'Steve' && null && 'sup' && 66); // short circuits at null and returns null.
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach')
+}
+
+restaurant.orderPizza && restaurant.orderPizza('cheese', 'pepperoni');
+
+
+
+console.log(`
+
+
+
+* * * * * * * * * * * * * * * * *
+ Nullish Coalescing Operator ??
+* * * * * * * * * * * * * * * * * `)
