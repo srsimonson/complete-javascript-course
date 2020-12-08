@@ -33,9 +33,15 @@ const restaurant = {
   },
 
   orderPasta: function(ing1, ing2, ing3){
-    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}.`);
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}.`); 
+  },
+
+  orderPizza: function(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
     
-  }
+  } 
+
 };
 
 restaurant.orderDelivery({
@@ -197,3 +203,47 @@ restaurantCopy.name = 'Little Cesars';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
 
+console.log(`
+
+
+
+* * * * * * * * * * * * * * * * *
+ Rest Pattern and Rest Parameters
+* * * * * * * * * * * * * * * * * `)
+
+// The opposite of spread operator, but uses the same syntax??
+// Spread, because on the right side of the = assignment operator
+// Where we would write variables separated by commas. (Whereas spread operator is values separated by commas.)
+const arrr = [ 1, 2, ...[3, 4] ]; 
+
+// REST, because on the left side of the = | it takes "the rest" of the values and combines them
+const [aaa, bbb, ...others] = [1, 2, 3, 4, 5]
+
+console.log(aaa, bbb, others);
+
+const [pizza,, risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(pizza, risotto, otherFood);
+
+
+// Object REST
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+//Functions - REST parameters
+const add = function(...numbers) {
+  let sum = 0
+  for (let i=0; i<numbers.length; i++) {
+    sum = sum + numbers[i]
+  }
+  return sum;
+};
+
+console.log('sum: ', add(2, 3) )
+console.log('sum: ', add(5, 3, 7, 2))
+console.log('sum: ', add (8, 2, 5, 3, 2, 1, 4))
+
+const xab = [23, 5, 7];
+add(...xab);
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms');
