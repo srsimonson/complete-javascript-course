@@ -30,6 +30,10 @@ const restaurant = {
     console.log(
       `order received: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} 
       will be delivered to ${address} at ${time}.`);
+  },
+
+  orderPasta: function(ing1, ing2, ing3){
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}.`);
     
   }
 };
@@ -86,16 +90,7 @@ const {
 console.log('open: ', op);
 console.log('close: ', cl);
 
-
-
-
-
-
 console.log(`
-
-
-
-
 /* * * * * * * * * * 
 ARRAY DESTRUCTURING 
 * * * * * * * * * */`);
@@ -144,3 +139,61 @@ console.log('k, l', k, l);
 
 const [ p=1, q=1, r=1 ] = [8, 9]
 console.log('p, q, r', p, q, r);
+console.log(`
+
+
+
+* * * * * * * * * 
+Spread Operator
+* * * * * * * * *`)
+// Expand an array into all it's elements. Unpacking an array all at once.
+
+const arr2 = [ 7, 8, 9 ];
+const badNewArr = [ 1, 2, arr2[0], arr2[1], arr2[2]]
+console.log('badNewArr', badNewArr);
+
+const newArr = [1, 2, ...arr2];
+const newerArr = [1, 2, arr2];
+console.log('newArr, newerArr', newArr, newerArr);
+console.log('arr2 || ...arr2: ', arr2, ...arr2);
+
+console.log('... newArr', ...newArr);
+console.log('... newerArr', newerArr[2]);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocchi'] //take all of mainMenu, pull it apart, add gnocchi.
+console.log('newMenu: ', newMenu);
+
+// Copy array
+const mainMenuCopy = [ ...restaurant.mainMenu ];
+
+// Join 2 arrays or more
+const fullMenu = [ ...restaurant.starterMenu, ...restaurant.mainMenu ];
+console.log('fullMenu: ', fullMenu);
+
+// Iterables: arrays, strings, maps, sets (NOT objects)
+const str = 'Steve';
+const letters = [...str, ' ', 'X']
+console.log('letters: ', letters);
+console.log(...str);
+
+// const ingredients = [
+//   prompt('Let\'s make pasta! Ingredient 1? '),
+//   prompt('Let\'s make pasta! Ingredient 2? '),
+//   prompt('Let\'s make pasta! Ingredient 3? ')
+// ]
+
+  // console.log('ingredients: ', ingredients);
+  
+// Both the same
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2])
+// restaurant.orderPasta(...ingredients);
+
+// Object spread operator
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Yeezy' };
+console.log('newRestaurant: ', newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Little Cesars';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
