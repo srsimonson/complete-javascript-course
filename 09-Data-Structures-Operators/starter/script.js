@@ -58,7 +58,9 @@ restaurant.orderDelivery({
 
 
 
-console.log(`/* * * * * * * * * * 
+console.log(`
+
+/* * * * * * * * * * 
 OBJECT DESTRUCTURING 
 * * * * * * * * * */`);
 
@@ -97,6 +99,10 @@ console.log('open: ', op);
 console.log('close: ', cl);
 
 console.log(`
+
+
+
+
 /* * * * * * * * * * 
 ARRAY DESTRUCTURING 
 * * * * * * * * * */`);
@@ -247,3 +253,26 @@ add(...xab);
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
+
+console.log(`
+
+
+
+* * * * * * * * * * * * * * * * *
+ Short Circuiting with && and ||
+* * * * * * * * * * * * * * * * * `)
+
+// Logical operators an use or return any data type, and can do short-circuiting or short-circuit evaluation.
+
+// If first value is true, then the 2nd will not even render.
+console.log ( 3 || 'Steve' );
+console.log ('nothing: ', '' || '' );
+console.log ( true || 0 );
+console.log ( undefined || null );
+console.log('Hello? ', undefined || 0 || '' || null || 'Yes, Hello!' || 23);
+
+restaurant.numGuests = 23
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+
+const guests1 = restaurant.numGuests || 10
+console.log('guests1: ', guests1);
