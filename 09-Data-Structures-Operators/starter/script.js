@@ -303,3 +303,12 @@ console.log(`
 * * * * * * * * * * * * * * * * *
  Nullish Coalescing Operator ??
 * * * * * * * * * * * * * * * * * `)
+
+// When falsy, return the default, which is the second.
+restaurant.numGuests = 0;
+const guest3 = restaurant.numGuests || 10;
+console.log('guest3: ', guest3);
+
+// Nullish values: null and undefined (does not include 0 or '' )
+const guest4 = restaurant.numGuests ?? 10;
+console.log('guest4', guest4); // returns 0
