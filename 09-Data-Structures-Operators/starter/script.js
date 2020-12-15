@@ -897,11 +897,11 @@ delayed_departure
 
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
-
 document.querySelector('button').onclick = () => {
+  
   let checkBox = '';
   let arrayOfInputs;
-  arrayOfInputs = document.querySelector('textarea').value.split('\n')
+  arrayOfInputs = document.querySelector('textarea').value.split('\n');
   for (const x of arrayOfInputs) {
     checkBox = checkBox + '✅';
     let lowerCaseSplit = x.toLowerCase().trim().split('_')
