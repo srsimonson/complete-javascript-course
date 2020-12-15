@@ -698,3 +698,217 @@ for (const [i, [min, evnt]] of newerArray.entries()) {
 
 
 // GOOD LUCK 😀
+
+console.log(`
+
+
+
+* * * * *
+ STRINGS
+* * * * *`)
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); // A
+console.log(Number(plane[1])); // 3
+console.log(plane[2]); // 2
+
+console.log('B737'.length);
+console.log(airline.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.indexOf('Portugal'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.slice(4)); // Air Portugal. the 4 is the index that the slice starts.
+// Impossible to mutate strings. Need to store this into a new variable.
+console.log(airline.slice(4, 7)); // Beginning and ending values. Start at 4, stop before 7.
+
+console.log(airline.slice(0, airline.indexOf(' '))); // TAP
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2)); // loops, the last 2 letters of Portugal // al
+console.log(airline.slice(1, -1)); // removes the first and last letter //
+
+// Check whether a seat in the plane is a middle seat (ABC , DEF)
+const checkMiddleSeat = seat => {
+  let seatLetter = seat.slice(-1);
+  seatLetter === 'B' || seatLetter === 'E' ?
+  console.log('MIDDLE') : 
+  console.log('NOT MIDDLE');
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// Fix capitalization in passenger name;
+let passName = 'sTeVe';
+console.log(passName);
+
+passName = passName.toLowerCase()
+passName = passName[0].toUpperCase() + passName.slice(1)
+console.log(passName);
+
+// Comparing emails
+let email = 'hello@jonas.io';
+let loginEmail = ' Hello@Jonas.Io \n';
+
+loginEmail = loginEmail.toLocaleLowerCase().trim()
+// loginEmail = loginEmail.trim();
+console.log(loginEmail);
+
+let compareEmails = (x, y) => x === y ? console.log('same') : console.log('different');
+
+compareEmails(email, loginEmail);
+
+// Replace parts of strings
+const priceGB = '288,97£';
+let priceUS = priceGB.replace(',', '.').replace('£', '$')
+console.log(priceUS);
+
+const announcement = 'All passengers come to boarding door 23. Boarding door 23.'
+console.log(announcement.replace(/door/g, 'gate'));
+// Regular expression. Write string between slashes. Then the g flag = 'global' or all.
+
+// Booleans
+// includes, startWith, endsWith
+
+const newPlane = 'Airbus A320neo';
+console.log(newPlane.includes('A320'));
+console.log(newPlane.includes('Boeing'));
+console.log(newPlane.startsWith('Airb'));
+
+if (newPlane.startsWith('Airbus') && newPlane.endsWith('neo')) {
+  console.log('Part of the new Airbus family');  
+}
+
+const checkBaggage = (items) => {
+  const baggage = items.toLowerCase();
+  baggage.includes('gun') || baggage.includes('knife') ? console.log('You can\'t board.') : console.log('You can board.');
+  // Rule of thumb, always make inputs lowercase.
+}
+
+checkBaggage('I have a laptop, some food, and a pocket Knife.');
+checkBaggage(' Socks and a camera');
+checkBaggage(' Got some snacks and a gun for protection.');
+console.log(`
+
+
+
+* * * * * * * * *
+ Split and Join
+* * * * * * * * *`)
+
+//Split and Join. Split splits a sentence into an array split on a specified character. Join joins an array into a string, separated by a specified character.
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Jonas Schmedtmann'.split(' '));
+
+const [firstName, lastName] = 'Steve Simonson'.split(' ');
+console.log(firstName, lastName);
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const newerPassenger = 'jessica ann smith davis';
+const capitalizeName = name => {
+  let nameCapd = name.split(' ');
+  let newName = [];
+  console.log(nameCapd);
+  for (name of nameCapd) {
+    nameCapd = name[0].toUpperCase() + name.slice(1);
+   newName.push(nameCapd);
+  }
+  console.log(newName.join(' '));
+  
+}
+
+capitalizeName('steve simonson')
+capitalizeName(newerPassenger)
+
+// Padding a string
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, 'x')); // adds a bunch of x's until the whole length is 25 characters.
+console.log('HI'.padStart(25, 'x')); // adds a bunch of x's until the whole length is 25 characters.
+console.log(message.padEnd(25, 'x')); // adds a bunch of x's until the whole length is 25 characters.
+console.log('HI'.padEnd(25, 'xoxoxoxoxoxoxox')); // adds a bunch of x's until the whole length is 25 characters.
+console.log('HI'.padStart(10, 'x').padEnd(20, 'o')); // add x's til 10, add o's til 20;
+
+const maskCardNum = (num) => {
+  const str = num + ''; // turns to string
+  const last = str.slice(str.length-4, str.length)
+  let maskedNum = last.padStart(str.length, '*')
+  console.log(maskedNum);
+  
+}
+
+maskCardNum(1234567890);
+maskCardNum(9573659458123456);
+
+// Repeat
+const message2 = 'Bad weather... all departures delayed... ';
+console.log(message2.repeat(5)); // Number of times repeated.
+
+const planesInLine = num => {
+  console.log(`There are ${num} planes in line. ${`✈️ `.repeat(num)}`);
+}
+
+planesInLine(8);
+planesInLine(100);
+
+
+console.log(`
+
+
+
+* * * * * * * * * *
+ Code Challenge #4
+* * * * * * * * * *`)
+
+// Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+
+// The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
+
+// THIS TEST DATA (pasted to textarea)
+/*
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
+*/
+// SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+// underscoreCase      ✅
+// firstName           ✅✅
+// someVariable        ✅✅✅
+// calculateAge        ✅✅✅✅
+// delayedDeparture    ✅✅✅✅✅
+
+// HINT 1: Remember which character defines a new line in the textarea 😉
+// HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+// HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+// HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+// Afterwards, test with your own test data!
+// GOOD LUCK 😀
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').onclick = () => {
+  let checkBox = '';
+  let arrayOfInputs;
+  arrayOfInputs = document.querySelector('textarea').value.split('\n')
+  for (const x of arrayOfInputs) {
+    checkBox = checkBox + '✅';
+    let lowerCaseSplit = x.toLowerCase().trim().split('_')
+    let firstWord = lowerCaseSplit[0];
+    let secondWord = lowerCaseSplit[1];
+    secondWord = ('secondWord', secondWord[0].toUpperCase() + secondWord.slice(1));
+    console.log((firstWord+secondWord).padEnd(20, ' ') + `${checkBox}`);
+  }
+  checkBox = checkBox + '✅';
+}
