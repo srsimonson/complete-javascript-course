@@ -1,5 +1,23 @@
 'use strict';
 
+const days = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
+
+
+const hoursOfOperation = {
+  [days[3]]: { // Compute property names of objects: [days[3]] for example.
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -7,36 +25,23 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  hoursOfOperation,
 
-  order: function(starterIndex, mainIndex) {
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
   },
 
-  orderDelivery: function({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
+  orderDelivery({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
     console.log(
       `order received: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} 
       will be delivered to ${address} at ${time}.`);
   },
 
-  orderPasta: function(ing1, ing2, ing3){
+  orderPasta(ing1, ing2, ing3){
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}.`); 
   },
 
-  orderPizza: function(mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
     
@@ -92,7 +97,7 @@ console.log('aa, bb: ', aa, bb);
 
 const { 
   fri: { open: op, close: cl} 
-} = openingHours
+} = hoursOfOperation
 
 // console.log('fri: ', fri);
 console.log('open: ', op);
@@ -232,7 +237,7 @@ console.log(pizza, risotto, otherFood);
 
 
 // Object REST
-const { sat, ...weekdays } = restaurant.openingHours;
+const { sat, ...weekdays } = restaurant.hoursOfOperation;
 console.log(weekdays);
 
 //Functions - REST parameters
@@ -384,6 +389,9 @@ const {
 console.log(team1, draw, team2);
 
 // [x] 6. Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
+
+// TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
+// GOOD LUCK 😀
 function printGoals(...players) {
   console.log(`Players who scored goals: ${players}... Total Goals: ${players.length}`); 
 }
@@ -394,7 +402,129 @@ printGoals(...game.scored)
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
 
+console.log(`
 
 
-// TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
-// GOOD LUCK 😀
+
+* * * * * * * * * * * * * *
+ Looping Arrays with For-Of
+* * * * * * * * * * * * * * * * * `)
+
+const menuX = [...restaurant.starterMenu, ...restaurant.mainMenu]
+console.log('menuX: ', menuX);
+
+for (const item of menuX) {
+  console.log('item: ', item);
+}
+
+// Get index of for/of
+for (const [i, el] of menuX.entries()) { // [ i, el ] is the destructuring of the iterator variable
+    console.log(`${i +1 }: ${el}`);
+}
+
+console.log(`
+
+
+
+* * * * * * * * * *
+ Optional Chaining
+* * * * * * * * * *`)
+
+// console.log(restaurant.hoursOfOperation.fri.open);
+
+if (restaurant.hoursOfOperation && restaurant.hoursOfOperation.mon ) console.log (restaurant.openingHours.mon.open)
+//Optional Chaining
+if (restaurant.hoursOfOperation.mon?.open) console.log('hi');
+
+// Can have multiple
+if (restaurant.hoursOfOperation?.fri?.open) console.log(restaurant.hoursOfOperation.fri.open);
+
+const dias = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
+
+for (const dia of dias) {
+  const open = restaurant.hoursOfOperation[dia]?.open ?? 'closed';
+  console.log(`On ${dia}, we are open at ${open}.`); 
+}
+
+// on methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist' );
+console.log(restaurant.complain?.(0, 1) ?? 'Method does not exist' );
+
+// on arrays
+const users = [ { name: 'Steve', faveNumber: 7} ]
+
+console.log(users[1]?.name ?? 'User does not exist');
+
+console.log(`
+
+
+
+* * * * * * * * * *
+ Looping Objects
+* * * * * * * * * *`)
+
+const properties = Object.keys(hoursOfOperation);
+console.log(properties);
+const values = Object.values(hoursOfOperation);
+console.log(values);
+const entries = Object.entries(hoursOfOperation);
+console.log(entries);
+
+let openString = `We are open on ${properties.length} days: `
+
+for (const day of properties) {
+  openString += `${day}, `
+}
+
+console.log(openString);
+
+for (const [day, {open, close}] of entries) { // destructuring array and the object inside the array inside the loop.
+  console.log(x);
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
+  
+}
+
+console.log(`
+
+
+
+* * * * * * * * * *
+ Code Challenge 2
+* * * * * * * * * *`)
+
+// Let's continue with our football betting app!
+
+// [x] 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+
+for (const [goal, player] of game.scored.entries()) {
+  console.log(`Goal ${goal +1} scored by player ${player}.`);
+}
+
+// [x] 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+const odds = Object.values(game.odds);
+let  newOdd = 0;
+
+for (const odd of odds) {
+  newOdd += odd;
+  // console.log(odds.entries().length);
+  console.log(newOdd / odds.length); 
+}
+
+// 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+//       Odd of victory Bayern Munich: 1.33
+//       Odd of draw: 3.25
+//       Odd of victory Borrussia Dortmund: 6.5
+// Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamString = team === 'x' ? `draw` : `victory`
+  console.log(`Odd of ${game[team]} ${teamString}: ${odd}`); 
+}
+
+// [ ] BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+//       {
+//         Gnarby: 1,
+//         Hummels: 1,
+//         Lewandowski: 2
+//       }
+
