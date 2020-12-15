@@ -637,18 +637,6 @@ console.log(`
  Challenge #3
 * * * * * * * *`)
 
-// Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
-
-// 1. Create an array 'events' of the different game events that happened (no duplicates)
-
-// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
-
-// 3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
-
-// 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
-//       [FIRST HALF] 17: ⚽️ GOAL
-// GOOD LUCK 😀
-
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
   [36, '🔁 Substitution'],
@@ -662,3 +650,51 @@ const gameEvents = new Map([
   [80, '⚽️ GOAL'],
   [92, '🔶 Yellow card'],
 ]);
+
+// console.log('OG Game Events: ', gameEvents);
+
+
+// Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+// 1. Create an array 'events' of the different game events that happened (no duplicates)
+const newArray = [ ...gameEvents];
+let events = [];
+for (const [i, [min, evnt]] of newArray.entries()) {
+  events.push(evnt)
+}
+events = [...new Set(events)]
+console.log(events);
+
+const betterSoln = [...new Set(gameEvents.values())]
+console.log("Better Soln: ", betterSoln);
+
+
+// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+gameEvents.delete(64);
+console.log('new gameEvents: ', gameEvents);
+const newerArray = [...gameEvents]
+
+// 3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+const timez = [...gameEvents.keys()].pop()
+// console.log('TIMEz', timez);
+
+const avg = timez / gameEvents.size;
+console.log(`An event happened, on average, every ${avg} minutes.`);
+
+// let avg = 0;
+// for (const [i, [min, evnt]] of newerArray.entries()) {
+//   console.log(min);
+  
+//   avg = (min) / ( avg + min )
+// }
+// console.log(`An event happened, on average, every ${avg} minutes.`);
+
+// 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+//       [FIRST HALF] 17: ⚽️ GOAL
+for (const [i, [min, evnt]] of newerArray.entries()) {
+  const desc = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${desc} HALF] ${min}: ${evnt}`);
+}
+
+
+// GOOD LUCK 😀
