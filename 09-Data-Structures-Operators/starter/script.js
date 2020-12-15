@@ -528,3 +528,137 @@ for (const [team, odd] of Object.entries(game.odds)) {
 //         Lewandowski: 2
 //       }
 
+
+console.log(`
+
+
+
+* * * *
+ SETS 
+* * * *`)
+// A collection of uniqueValues. No dupliates. Must be iterable. Order doesn't matter. If there are any duplicates, it removes them kinda. No indexes. Can't get data out of a set.
+
+const orderSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+  console.log(orderSet);
+const steve = new Set('Steve Simonson');
+steve.clear();
+  console.log(steve);
+  console.log(orderSet.size);
+  console.log( orderSet.has('Pizza'));
+  console.log( orderSet.has('Bread'))
+orderSet.add('Bread'); // Add to Set
+  console.log(orderSet);
+orderSet.delete('Bread');
+  console.log(orderSet);
+
+for (const order of orderSet) console.log(order);
+
+// Main use case if Sets is to remove duplicates of arrays.
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)]; // Turn it back into an object.
+  console.log(staffUnique);
+  console.log( new Set ('Steve Simonson').size);
+
+  console.log(`
+
+
+
+* * * *
+  MAPS
+* * * *`)
+// A data structure we can use to map values to keys. Data stored in key value pairs. In maps, the keys can have any type. In objects, the keys are strings only. In maps, the keys can be anything.
+
+const rest = new Map();
+  // console.log(rest);
+rest.set('name', 'Classico Italiano');
+  // console.log(rest);
+rest.set(1, 'Italy');
+rest.set(2, 'Portugal');
+  // console.log(rest);
+rest.set('categories', ['Italian', 'Pizzaria', 'Vegetarian', 'Organic']).set('open', 11).set('closed', 23);
+  // console.log(rest); 
+rest.set(true, 'We Are Open').set(false, 'We Are Closed');
+  // console.log(rest);
+  // console.log(rest.get(true)) // 'We Are Open'
+
+const time = 22;
+  // console.log( rest.get(time > rest.get('open') && time < rest.get('close')))
+
+  // console.log(rest.has('categories'));
+rest.delete(2);
+// console.log(rest)
+
+const testArr = [1, 2]
+rest.set(testArr, 'test')
+// console.log(rest.get(testArr)) // the above and below are not the same object in the heap
+rest.set(document.querySelector('h1'), 'Heading') // the actual h1 of the page?!?!
+// console.log(rest.get('h1'));
+console.log(rest);
+
+// creating a new map without all the sets.
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again!']
+]);
+
+console.log(question);
+console.log(Object.entries(hoursOfOperation)); // Exact same structure as the new Map, so you can easily convert to the Map data structure.
+const hoursMap = new Map (Object.entries(hoursOfOperation));
+console.log(hoursMap);
+
+console.log(question.get('question'));
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+// let answer = Number(prompt('Your answer'))
+// console.log(answer);
+// if (answer === question.get('correct')) {
+//   console.log(question.get(true))
+// } else {
+//   console.log(false);
+// }
+
+// Convert map back to array
+console.log( [...question]  );
+
+
+console.log(`
+
+
+
+* * * * * * * *
+ Challenge #3
+* * * * * * * *`)
+
+// Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+// 1. Create an array 'events' of the different game events that happened (no duplicates)
+
+// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+
+// 3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+
+// 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+//       [FIRST HALF] 17: ⚽️ GOAL
+// GOOD LUCK 😀
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
