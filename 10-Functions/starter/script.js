@@ -329,3 +329,53 @@ poll.displayResults = function(type) {
 // BONUS TEST DATA 1: [5, 2, 3]
 // BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 // GOOD LUCK 😀
+
+console.log(`
+
+
+
+* * * * * * * * * *
+Immediately Invoked Function Expressions (IIFE)
+* * * * * * * * * * `);
+// Functions that immediately execute, run once, then disappear.
+
+(function() {
+    console.log('This will never run again.');
+})(); // Wrap the function with no name in parenthesis, then call it with empty parenthesis.
+
+(() => console.log('This will never run again either'))();
+
+console.log(`
+
+
+
+* * * * * *
+ Closures
+* * * * * * `);
+// A function has access to all the variables of its parent function, even after the parent unction has returned. The function keeps a reference to its outer scope, which preserves the scope chain through time.
+// A function has access to all the variables that existed at the function's creation.
+
+const secureBooking = function () {
+    let passengerCount = 0;
+    return function () {
+        passengerCount++;
+        console.log(`${passengerCount} passengers.`);
+    }
+}
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
+
+(function () {
+    const header = document.querySelector('h1');
+    header.style.color = 'red';
+    header.addEventListener('click', function () {
+        header.style.color = 'blue';
+    })
+})();
+document.querySelector('h1')
