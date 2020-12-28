@@ -74,3 +74,34 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e']
+
+// SLICE - does not change original array. Creates a new array.
+console.log(arr.slice(2)); // ['c', 'd', 'e']
+console.log(arr.slice(2, 4)); // ['c', 'd'] - length will be end param minus beginning (4-2)
+console.log(arr.slice(-2)); // ['d', 'e']
+console.log(arr.slice(-1)); // ['e'] - always the last element of an array
+console.log(arr.slice(1, -2)); // ['b', 'c']
+console.log(arr.slice()); // creates a shallow copy
+console.log([...arr]); // also creates a shallow copy
+
+//SPLICE - DOES mutate original array.
+console.log(arr.splice(-1));
+console.log(arr.splice(1, 2)); // start at postion 1, delete 2 elements
+console.log(arr);
+
+//REVERSE - DOES mutate original array
+arr = ['a', 'b', 'c', 'd', 'e']
+let arr2 = ['j', 'i', 'h', 'g', 'f']
+console.log(arr2.reverse());
+
+//CONCAT
+const letters = arr.concat(arr2);
+const spreadLetters = ([...arr, ...arr2])
+console.log(letters);
+console.log(spreadLetters);
+
+// JOIN
+console.log(letters.join(' + '));
+

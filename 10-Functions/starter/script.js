@@ -378,4 +378,3 @@ console.dir(booker);
         header.style.color = 'blue';
     })
 })();
-document.querySelector('h1')
