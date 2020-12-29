@@ -136,3 +136,5 @@ const currencies = new Map([
 
 console.log(currencies);
 currencies.forEach((value, key, map) => console.log(value, ": ", key))
+
+// Works the same with sets, but since there is no key-value pair or index, you don't need them.
