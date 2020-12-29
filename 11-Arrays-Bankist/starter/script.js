@@ -65,13 +65,13 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -105,3 +105,34 @@ console.log(spreadLetters);
 // JOIN
 console.log(letters.join(' + '));
 
+
+////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i+1}: You deposited ${movement}.`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}.`);
+  }
+}
+console.log('=====FOR EACH======');
+
+// forEach - executes a callback function for each element of the array
+movements.forEach( function (movement, index, arr) { 
+  movement > 0 ? console.log(`Index ${index}: You deposited ${movement}... 
+  ARR: ${arr}`) : 
+  console.log(`You withdrew ${Math.abs(movement)}.`
+  )
+}
+)
+
+// forEach with maps and sets
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+console.log(currencies);
+currencies.forEach((value, key, map) => console.log(value, ": ", key))
