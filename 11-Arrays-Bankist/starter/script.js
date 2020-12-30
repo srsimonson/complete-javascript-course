@@ -186,9 +186,10 @@ const checkDogs = (dogsJulia, dogsKate) => {
   for (const [i, dog] of bothTheirDogs.entries()) {
     dog < 3 ? console.log(`Dog number ${i+1} still a puppy.`) : console.log(`Dog number ${i+1} is an adult, and is ${dog} years old.`); 
   }
+  bothTheirDogs.forEach( (dog, i) => dog < 3 ? console.log(`Dog number ${i+1} still a puppy.`) : console.log(`Dog number ${i+1} is an adult, and is ${dog} years old.`));
 }
-checkDogs(julia1, kate1);
-checkDogs(julia2, kate2);
+// checkDogs(julia1, kate1);
+// checkDogs(julia2, kate2);
 
 // 4. Run the function for both test datasets
 
@@ -196,3 +197,24 @@ checkDogs(julia2, kate2);
 // TEST DATA 1: 
 
 // GOOD LUCK 😀
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const euroToUsd = 1.1;
+
+const movementsUSD = movements.map( mov => mov * euroToUsd );
+
+console.log(movements);
+console.log('map: ', movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * euroToUsd)
+}
+
+console.log(movementsUSDfor);
+
+const movementsDescriptions = movements.map( (mov, i) => {
+  return mov > 0 ? `Movement ${i+1}: You deposited ${mov}.` : `Movement ${i+1}: You withdrew ${mov}.`
+})
+
+console.log('movementsDescriptions: ', movementsDescriptions);
