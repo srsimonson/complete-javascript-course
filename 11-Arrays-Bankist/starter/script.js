@@ -232,3 +232,19 @@ const movementsDescriptions = movements.map( (mov, i) => {
 })
 
 console.log('movementsDescriptions: ', movementsDescriptions);
+
+// Filter
+const deposits = movements.filter(mov => mov > 0);
+
+console.log('movements: ', movements);
+console.log('deposits:', deposits);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log('withdrawals: ', withdrawals);
+
+
+// Reduce
+const balance = movements.reduce(function(accumulator, current, index, array) {
+  console.log('asdf: ',accumulator, current, index, array);
+  return accumulator + current
+})
