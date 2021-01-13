@@ -79,6 +79,12 @@ displayMovements(account1.movements);
 // console.log(containerMovements.innerHTML);
 
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+}
+calcDisplayBalance(account1.movements);
+
 const user = 'Steven Thomas Williams'; // stw
 
 const createUsernames = function (accts) {
@@ -244,6 +250,7 @@ const withdrawals = movements.filter(mov => mov < 0);
 
 
 // Reduce
+  // Reduce an array into a single value. The accumulator (sum), highest value, etc.
 console.log(movements);
 
 // Accumulator is like a snowball.
@@ -258,3 +265,14 @@ const balance = movements.reduce( function(acc, cur, i, arr) {
 }, 0) // <- 0 is the initial value of the accumulator.
 
 console.log('balance: ', balance);
+
+// Max value of array with reduce();
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    return acc;
+  } else {
+    return mov
+  }
+}, movements[0]) // <- always go with first value of array
+
+console.log('max: ', max);
