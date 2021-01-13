@@ -91,7 +91,7 @@ const createUsernames = function (accts) {
   })
 }
 createUsernames(accounts)
-console.log(accounts);
+// console.log(accounts);
 
 
 
@@ -217,34 +217,44 @@ const euroToUsd = 1.1;
 
 const movementsUSD = movements.map( mov => mov * euroToUsd );
 
-console.log(movements);
-console.log('map: ', movementsUSD);
+// console.log(movements);
+// console.log('map: ', movementsUSD);
 
 const movementsUSDfor = [];
 for (const mov of movements) {
   movementsUSDfor.push(mov * euroToUsd)
 }
 
-console.log(movementsUSDfor);
+// console.log(movementsUSDfor);
 
 const movementsDescriptions = movements.map( (mov, i) => {
   return mov > 0 ? `Movement ${i+1}: You deposited ${mov}.` : `Movement ${i+1}: You withdrew ${mov}.`
 })
 
-console.log('movementsDescriptions: ', movementsDescriptions);
+// console.log('movementsDescriptions: ', movementsDescriptions);
 
 // Filter
 const deposits = movements.filter(mov => mov > 0);
 
-console.log('movements: ', movements);
-console.log('deposits:', deposits);
+// console.log('movements: ', movements);
+// console.log('deposits:', deposits);
 
 const withdrawals = movements.filter(mov => mov < 0);
-console.log('withdrawals: ', withdrawals);
+// console.log('withdrawals: ', withdrawals);
 
 
 // Reduce
-const balance = movements.reduce(function(accumulator, current, index, array) {
-  console.log('asdf: ',accumulator, current, index, array);
-  return accumulator + current
-})
+console.log(movements);
+
+// Accumulator is like a snowball.
+const balance = movements.reduce( function(acc, cur, i, arr) {
+  console.log('iterator: ', i);
+  console.log('accumulator: ', acc);
+  console.log('current: ', cur);
+  // console.log('array: ', arr);
+  
+  
+  return acc + cur
+}, 0) // <- 0 is the initial value of the accumulator.
+
+console.log('balance: ', balance);
