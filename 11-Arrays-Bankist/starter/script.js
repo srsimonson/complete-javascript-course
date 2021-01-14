@@ -336,7 +336,7 @@ const calcAverageHumanAge = (dogAges) => {
 // console.log(calcAverageHumanAge(dogAges2));
 
 // Chaining methods
-console.log('movemenets: ', movements); 
+// console.log('movemenets: ', movements); 
 const totalDepositsUSD = movements
   .filter(mov => mov > 0)
   .map(mov => mov * euroToUsd)
@@ -352,18 +352,40 @@ TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
 TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
-const calcAverageHumanAge2 = (dogAges) => {
-  let humanYears = dogAges
-    .map ( age => age <2 ? age*2 : 16 + age + 4)
+const calcAverageHumanAge2 = dogAges => {
+  let avg = dogAges
+    .map ( age => age < 2 ? age*2 : 16 + age * 4)
     .filter( age => age > 18 )
     .reduce(( avg, value, _, { length } ) =>  avg + value / length, 0);
-    return humanYears;
+  return avg;
 }
 
-console.log(calcAverageHumanAge2(dogAges1));
-console.log(calcAverageHumanAge2(dogAges2));
+// console.log(calcAverageHumanAge2(dogAges1));
+// console.log(calcAverageHumanAge2(dogAges2)); 
 
-///////////////////////////////////////
+
+console.log('movements: ', movements);
+
+// Find does not create a new array, but returns the first value that meets the condition.
+const firstWithdrawal = movements.find(mov => mov < 0)
+console.log(firstWithdrawal)
+console.log(accounts)
+
+const account = accounts.find(acc => acc.pin === 3333);
+console.log(account);
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////// 
 // Coding Challenge #4
 
 /* 
