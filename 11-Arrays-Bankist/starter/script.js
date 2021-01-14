@@ -255,23 +255,23 @@ const withdrawals = movements.filter(mov => mov < 0);
 
 // Reduce
   // Reduce an array into a single value. The accumulator (sum), highest value, etc.
-console.log(movements);
+// console.log(movements);
 
 // Accumulator is like a snowball.
 const balance = movements.reduce( function(acc, cur, i, arr) {
-  console.log('iterator: ', i);
-  console.log('accumulator: ', acc);
-  console.log('current: ', cur);
+  // console.log('iterator: ', i);
+  // console.log('accumulator: ', acc);
+  // console.log('current: ', cur);
   // console.log('array: ', arr);
   
   
   return acc + cur
 }, 0) // <- 0 is the initial value of the accumulator.
 
-console.log('balance: ', balance);
+// console.log('balance: ', balance);
 
 // Max value of array with reduce();
-const max = movements.reduce((acc, mov) => {
+const max = movements.reduce((acc, mov) => {  
   if (acc > mov) {
     return acc;
   } else {
@@ -292,29 +292,24 @@ const dogAges1 = [5, 2, 4, 1, 15, 8, 3];
 const dogAges2 = [16, 6, 10, 5, 6, 1, 4];
 
 const calcAverageHumanAge = (dogAges) => {
-  let humanYears = dogAges.map((age) => {
-    if (age <=2 ) {
+  let humanYears = dogAges.map( age => {
+    if (age <= 2 ) {
       return age*2;
     } else {
-      return 16 + age *4
+      return 16 + age * 4
     }
   })
   // 2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs that are at least 18 years old)
-  humanYears = humanYears.filter( age => age > 18 );
-  return humanYears;
+  let adults = humanYears.filter( age => age > 18 );
+  // 3. Calculate the average human age of all adult dogs (you should already know from other challenges how we calculate averages 😉)
+  let avg = adults.reduce(( avg, value, _, { length } ) => {
+    return avg + value / length;
+  }, 0);
+  return avg;
 }
-
+// 4. Run the function for both test datasets
 console.log(calcAverageHumanAge(dogAges1));
 console.log(calcAverageHumanAge(dogAges2));
-
-
-
-// 3. Calculate the average human age of all adult dogs (you should already know from other challenges how we calculate averages 😉)
-
-// 4. Run the function for both test datasets
-// const dogAges1 = [5, 2, 4, 1, 15, 8, 3];
-// const dogAges2 = [16, 6, 10, 5, 6, 1, 4];
-// GOOD LUCK 😀
 
 
 
