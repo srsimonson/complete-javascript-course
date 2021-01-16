@@ -75,6 +75,7 @@ const displayMovements = function(movements) {
   }) 
 }
 
+displayMovements(account1.movements);
 // console.log(containerMovements.innerHTML);
 
 
@@ -83,6 +84,7 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance}€
   `;
 }
+calcDisplayBalance(account1.movements);
 
 const calcDisplaySummary = (movements) => {
   const incomes = movements
@@ -105,6 +107,7 @@ const calcDisplaySummary = (movements) => {
     labelSumInterest.textContent = `${interest}€`
 }
 
+calcDisplaySummary(account1.movements);
 
 const user = 'Steven Thomas Williams'; // stw
 
@@ -120,25 +123,8 @@ const createUsernames = function (accts) {
 createUsernames(accounts)
 // console.log(accounts);
 
-// Event Handlers
-let currentAccount;
 
-btnLogin.addEventListener('click', function (e) {
-  e.preventDefault();
-  
-  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
-  // console.log('currentAccount: ', currentAccount);
 
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
-    containerApp.style.opacity = 100;
-    displayMovements(currnetAccount.movements)
-    calcDisplayBalance(currentAccount.movements);
-    calcDisplaySummary(currentAccount.movements);
-
-  };
-  
-})
 
 
 
@@ -387,6 +373,9 @@ console.log(accounts)
 
 const account = accounts.find(acc => acc.pin === 3333);
 console.log(account);
+
+
+
 
 
 
